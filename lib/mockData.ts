@@ -1,144 +1,170 @@
 export interface CarProfile {
-  vin: string;
-  make: string;
+  registration: string;
   model: string;
-  trim: string;
   year: number;
-  mileage: number;
-  color: string;
+  currentKM: number;
+  fuelType: string;
   purchaseDate: string;
-  purchasePrice: number;
-  currentValue: number;
+  variant: string;
+}
+
+export interface HealthMetric {
+  component: string;
+  score: number;
+  status: 'Good' | 'Fair' | 'Poor';
+  color: string;
 }
 
 export interface ServiceRecord {
+  id: string;
   date: string;
-  type: 'routine' | 'repair' | 'inspection';
+  type: string;
   description: string;
   cost: number;
-  mileage: number;
-  provider: string;
+  km: number;
+  serviceCenter: string;
 }
 
-export interface HealthMetrics {
-  engine: number;
-  transmission: number;
-  brakes: number;
-  suspension: number;
-  electrical: number;
-  tires: number;
-}
-
-export interface MaintenanceItem {
-  service: string;
+export interface ServiceMilestone {
+  km: number;
   description: string;
-  mileage: number;
-  status: 'completed' | 'upcoming' | 'scheduled';
+  completed: boolean;
+  dueDate?: string;
+}
+
+export interface ResaleFactor {
+  factor: string;
+  impact: 'Positive' | 'Neutral' | 'Negative';
+  description: string;
 }
 
 export const carProfile: CarProfile = {
-  vin: "5UXCR6C0XL9C74429",
-  make: "BMW",
-  model: "X5",
-  trim: "M50i",
-  year: 2023,
-  mileage: 8500,
-  color: "Alpine White",
-  purchaseDate: "2023-01-15",
-  purchasePrice: 95000,
-  currentValue: 82500
+  registration: 'MH-12-AB-1234',
+  model: 'Hyundai Creta',
+  year: 2021,
+  currentKM: 38000,
+  fuelType: 'Diesel',
+  purchaseDate: '2021-03-15',
+  variant: 'SX(O) 1.5 Diesel',
 };
+
+export const healthScore = 82;
+
+export const healthMetrics: HealthMetric[] = [
+  { component: 'Engine', score: 90, status: 'Good', color: '#10b981' },
+  { component: 'Transmission', score: 85, status: 'Good', color: '#3b82f6' },
+  { component: 'Suspension', score: 75, status: 'Fair', color: '#f59e0b' },
+  { component: 'Electrical', score: 78, status: 'Fair', color: '#8b5cf6' },
+];
 
 export const serviceHistory: ServiceRecord[] = [
   {
-    date: "2024-09-15",
-    type: "routine",
-    description: "Oil change and multi-point inspection",
-    cost: 185,
-    mileage: 8200,
-    provider: "BMW Service Center"
+    id: '1',
+    date: '2026-09-15',
+    type: 'Scheduled Service',
+    description: '30,000 KM service - Oil change, filter replacement, brake inspection',
+    cost: 5500,
+    km: 30000,
+    serviceCenter: 'Hyundai Authorized Service Center',
   },
   {
-    date: "2024-06-22",
-    type: "routine",
-    description: "Tire rotation and brake inspection",
-    cost: 120,
-    mileage: 6800,
-    provider: "BMW Service Center"
+    id: '2',
+    date: '2026-03-10',
+    type: 'Scheduled Service',
+    description: '20,000 KM service - Oil change, tire rotation, AC gas top-up',
+    cost: 4200,
+    km: 20000,
+    serviceCenter: 'Hyundai Authorized Service Center',
   },
   {
-    date: "2024-03-10",
-    type: "inspection",
-    description: "Annual safety inspection",
-    cost: 95,
-    mileage: 5200,
-    provider: "BMW Service Center"
+    id: '3',
+    date: '2025-09-05',
+    type: 'Scheduled Service',
+    description: '10,000 KM service - Oil change, filter replacement',
+    cost: 3500,
+    km: 10000,
+    serviceCenter: 'Hyundai Authorized Service Center',
   },
   {
-    date: "2023-12-18",
-    type: "routine",
-    description: "Oil change and filter replacement",
-    cost: 185,
-    mileage: 3500,
-    provider: "BMW Service Center"
+    id: '4',
+    date: '2025-05-20',
+    type: 'Repair',
+    description: 'Windshield replacement due to crack',
+    cost: 8500,
+    km: 7500,
+    serviceCenter: 'Glass Specialist Auto Care',
   },
   {
-    date: "2023-09-05",
-    type: "routine",
-    description: "First service - oil change, inspection",
+    id: '5',
+    date: '2021-04-01',
+    type: 'First Service',
+    description: '1,000 KM first free service - Basic inspection',
     cost: 0,
-    mileage: 1500,
-    provider: "BMW Service Center"
-  }
+    km: 1000,
+    serviceCenter: 'Hyundai Authorized Service Center',
+  },
 ];
 
-export const healthMetrics: HealthMetrics = {
-  engine: 95,
-  transmission: 92,
-  brakes: 88,
-  suspension: 90,
-  electrical: 94,
-  tires: 85
+export const serviceMilestones: ServiceMilestone[] = [
+  {
+    km: 10000,
+    description: 'First major service',
+    completed: true,
+  },
+  {
+    km: 20000,
+    description: 'Second scheduled service',
+    completed: true,
+  },
+  {
+    km: 30000,
+    description: 'Third scheduled service',
+    completed: true,
+  },
+  {
+    km: 40000,
+    description: 'Fourth scheduled service',
+    completed: false,
+    dueDate: '2027-01-15',
+  },
+  {
+    km: 50000,
+    description: 'Major service with transmission check',
+    completed: false,
+    dueDate: '2027-07-20',
+  },
+];
+
+export const resaleFactors: ResaleFactor[] = [
+  {
+    factor: 'Service History',
+    impact: 'Positive',
+    description: 'Complete service records from authorized center',
+  },
+  {
+    factor: 'Ownership',
+    impact: 'Positive',
+    description: 'Single owner, well maintained',
+  },
+  {
+    factor: 'Mileage',
+    impact: 'Neutral',
+    description: 'Average usage for age',
+  },
+  {
+    factor: 'Accident History',
+    impact: 'Positive',
+    description: 'No accident records',
+  },
+  {
+    factor: 'Market Demand',
+    impact: 'Positive',
+    description: 'High demand for this model',
+  },
+];
+
+export const estimatedResaleValue = {
+  current: 1250000,
+  afterOneYear: 1100000,
+  afterTwoYears: 950000,
 };
-
-export const valueOverTime = [
-  { year: "2023", value: 95000 },
-  { year: "2024", value: 82500 },
-  { year: "2025", value: 72000 },
-  { year: "2026", value: 64000 },
-  { year: "2027", value: 58000 },
-  { year: "2028", value: 52000 }
-];
-
-export const maintenanceSchedule: MaintenanceItem[] = [
-  {
-    service: "Oil Change",
-    description: "Replace engine oil and filter",
-    mileage: 10000,
-    status: "upcoming"
-  },
-  {
-    service: "Tire Rotation",
-    description: "Rotate tires and check alignment",
-    mileage: 10000,
-    status: "upcoming"
-  },
-  {
-    service: "Brake Inspection",
-    description: "Inspect brake pads and rotors",
-    mileage: 12000,
-    status: "scheduled"
-  },
-  {
-    service: "Cabin Air Filter",
-    description: "Replace cabin air filter",
-    mileage: 15000,
-    status: "scheduled"
-  },
-  {
-    service: "Previous Oil Change",
-    description: "Completed oil change and inspection",
-    mileage: 8200,
-    status: "completed"
-  }
-];
