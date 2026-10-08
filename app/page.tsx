@@ -48,77 +48,77 @@ export default function Dashboard() {
   return (
     <div>
       {/* MOBILE VIEW - Clean & Spacious */}
-      <div className="block md:hidden space-y-6">
+      <div className="block md:hidden space-y-8">
         {/* Header */}
-        <div>
-          <h1 className="text-3xl font-bold text-white mb-2">My Car</h1>
-          <p className="text-base text-gray-400">Track health, service & value</p>
+        <div className="text-center">
+          <h1 className="text-3xl font-bold text-white mb-3">My Car</h1>
+          <p className="text-lg text-gray-400">Track health, service & value</p>
         </div>
 
         {/* Car Profile Card - Full Width */}
-        <div className="bg-slate-800/50 backdrop-blur-sm border border-purple-500/20 rounded-xl p-6">
-          <div className="flex items-center space-x-4 mb-6">
-            <div className="bg-purple-500/20 rounded-2xl p-4">
-              <Car className="w-12 h-12 text-purple-400" />
+        <div className="bg-slate-800/50 backdrop-blur-sm border border-purple-500/20 rounded-2xl p-8">
+          <div className="flex flex-col items-center text-center mb-8">
+            <div className="bg-purple-500/20 rounded-3xl p-6 mb-4">
+              <Car className="w-16 h-16 text-purple-400" />
             </div>
-            <div className="flex-1">
-              <h2 className="text-2xl font-bold text-white mb-1">{carProfile.model}</h2>
-              <p className="text-base text-gray-400">{carProfile.registration}</p>
-            </div>
+            <h2 className="text-3xl font-bold text-white mb-2">{carProfile.model}</h2>
+            <p className="text-lg text-gray-400">{carProfile.registration}</p>
           </div>
-          <div className="space-y-3">
-            <div className="flex justify-between items-center">
-              <span className="text-gray-400 text-base">Year</span>
-              <span className="text-white font-medium text-base">{carProfile.year}</span>
+          <div className="space-y-5 bg-slate-700/30 rounded-xl p-6">
+            <div className="flex justify-between items-center py-2">
+              <span className="text-gray-400 text-lg">Year</span>
+              <span className="text-white font-semibold text-lg">{carProfile.year}</span>
             </div>
-            <div className="flex justify-between items-center">
-              <span className="text-gray-400 text-base">Variant</span>
-              <span className="text-white font-medium text-base">{carProfile.variant}</span>
+            <div className="h-px bg-purple-500/20"></div>
+            <div className="flex justify-between items-center py-2">
+              <span className="text-gray-400 text-lg">Variant</span>
+              <span className="text-white font-semibold text-lg">{carProfile.variant}</span>
             </div>
-            <div className="flex justify-between items-center">
-              <span className="text-gray-400 text-base">Current KM</span>
-              <span className="text-white font-medium text-base">{carProfile.currentKM.toLocaleString()}</span>
+            <div className="h-px bg-purple-500/20"></div>
+            <div className="flex justify-between items-center py-2">
+              <span className="text-gray-400 text-lg">Current KM</span>
+              <span className="text-white font-semibold text-lg">{carProfile.currentKM.toLocaleString()}</span>
             </div>
           </div>
         </div>
 
         {/* BIG Health Score Circle */}
-        <div className="bg-slate-800/50 backdrop-blur-sm border border-purple-500/20 rounded-xl p-6">
-          <h3 className="text-xl font-semibold text-white mb-6 text-center">Health Score</h3>
+        <div className="bg-slate-800/50 backdrop-blur-sm border border-purple-500/20 rounded-2xl p-10">
+          <h3 className="text-2xl font-semibold text-white mb-8 text-center">Health Score</h3>
           <div className="flex flex-col items-center justify-center">
-            <div className="relative w-40 h-40 mb-4">
-              <svg className="transform -rotate-90 w-40 h-40">
+            <div className="relative w-56 h-56 mb-8">
+              <svg className="transform -rotate-90 w-56 h-56">
                 <circle
-                  cx="80"
-                  cy="80"
-                  r="70"
+                  cx="112"
+                  cy="112"
+                  r="100"
                   stroke="currentColor"
-                  strokeWidth="12"
+                  strokeWidth="16"
                   fill="transparent"
                   className="text-slate-700"
                 />
                 <circle
-                  cx="80"
-                  cy="80"
-                  r="70"
+                  cx="112"
+                  cy="112"
+                  r="100"
                   stroke="currentColor"
-                  strokeWidth="12"
+                  strokeWidth="16"
                   fill="transparent"
-                  strokeDasharray={`${2 * Math.PI * 70}`}
-                  strokeDashoffset={`${2 * Math.PI * 70 * (1 - healthScore / 100)}`}
+                  strokeDasharray={`${2 * Math.PI * 100}`}
+                  strokeDashoffset={`${2 * Math.PI * 100 * (1 - healthScore / 100)}`}
                   className={healthScore >= 80 ? 'text-green-400' : healthScore >= 60 ? 'text-yellow-400' : 'text-red-400'}
                   strokeLinecap="round"
                 />
               </svg>
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-center">
-                  <div className="text-5xl font-bold text-white">{healthScore}</div>
-                  <div className="text-sm text-gray-400">out of 100</div>
+                  <div className="text-7xl font-bold text-white mb-1">{healthScore}</div>
+                  <div className="text-base text-gray-400">out of 100</div>
                 </div>
               </div>
             </div>
             <span
-              className={`inline-block px-6 py-2 rounded-full text-base font-medium ${
+              className={`inline-block px-8 py-3 rounded-full text-lg font-semibold ${
                 healthScore >= 80
                   ? 'bg-green-500/20 text-green-400'
                   : healthScore >= 60
@@ -132,69 +132,69 @@ export default function Dashboard() {
         </div>
 
         {/* Quick Stats - 2x2 Grid */}
-        <div className="grid grid-cols-2 gap-4">
-          <div className="bg-slate-800/50 backdrop-blur-sm border border-purple-500/20 rounded-xl p-5">
+        <div className="grid grid-cols-2 gap-5">
+          <div className="bg-slate-800/50 backdrop-blur-sm border border-purple-500/20 rounded-2xl p-7">
             <div className="flex flex-col items-center text-center">
-              <DollarSign className="w-8 h-8 text-gold-400 mb-3" />
-              <div className="text-2xl font-bold text-white flex items-center">
-                <IndianRupee className="w-5 h-5" />
+              <DollarSign className="w-12 h-12 text-gold-400 mb-4" />
+              <div className="text-3xl font-bold text-white flex items-center mb-2">
+                <IndianRupee className="w-6 h-6" />
                 <span>{(estimatedResaleValue.current / 100000).toFixed(1)}L</span>
               </div>
-              <div className="text-sm text-gray-400 mt-2">Current Value</div>
+              <div className="text-base text-gray-400">Current Value</div>
             </div>
           </div>
-          <div className="bg-slate-800/50 backdrop-blur-sm border border-purple-500/20 rounded-xl p-5">
+          <div className="bg-slate-800/50 backdrop-blur-sm border border-purple-500/20 rounded-2xl p-7">
             <div className="flex flex-col items-center text-center">
-              <Wrench className="w-8 h-8 text-purple-400 mb-3" />
-              <div className="text-2xl font-bold text-white">{serviceHistory.length}</div>
-              <div className="text-sm text-gray-400 mt-2">Services Done</div>
+              <Wrench className="w-12 h-12 text-purple-400 mb-4" />
+              <div className="text-3xl font-bold text-white mb-2">{serviceHistory.length}</div>
+              <div className="text-base text-gray-400">Services Done</div>
             </div>
           </div>
-          <div className="bg-slate-800/50 backdrop-blur-sm border border-purple-500/20 rounded-xl p-5">
+          <div className="bg-slate-800/50 backdrop-blur-sm border border-purple-500/20 rounded-2xl p-7">
             <div className="flex flex-col items-center text-center">
-              <Clock className="w-8 h-8 text-yellow-400 mb-3" />
-              <div className="text-2xl font-bold text-white">
+              <Clock className="w-12 h-12 text-yellow-400 mb-4" />
+              <div className="text-3xl font-bold text-white mb-2">
                 {serviceMilestones.filter(m => !m.completed).length}
               </div>
-              <div className="text-sm text-gray-400 mt-2">Upcoming</div>
+              <div className="text-base text-gray-400">Upcoming</div>
             </div>
           </div>
-          <div className="bg-slate-800/50 backdrop-blur-sm border border-purple-500/20 rounded-xl p-5">
+          <div className="bg-slate-800/50 backdrop-blur-sm border border-purple-500/20 rounded-2xl p-7">
             <div className="flex flex-col items-center text-center">
-              <Calendar className="w-8 h-8 text-blue-400 mb-3" />
-              <div className="text-2xl font-bold text-white">
+              <Calendar className="w-12 h-12 text-blue-400 mb-4" />
+              <div className="text-3xl font-bold text-white mb-2">
                 {carProfile.purchaseDate.split('-')[2]}
               </div>
-              <div className="text-sm text-gray-400 mt-2">Years Old</div>
+              <div className="text-base text-gray-400">Years Old</div>
             </div>
           </div>
         </div>
 
         {/* Service History - Simple List */}
-        <div className="bg-slate-800/50 backdrop-blur-sm border border-purple-500/20 rounded-xl p-6">
-          <h3 className="text-xl font-semibold text-white mb-6">Service History</h3>
-          <div className="space-y-4">
+        <div className="bg-slate-800/50 backdrop-blur-sm border border-purple-500/20 rounded-2xl p-8">
+          <h3 className="text-2xl font-semibold text-white mb-8">Service History</h3>
+          <div className="space-y-5">
             {serviceHistory.slice(0, 5).map((service) => (
-              <div key={service.id} className="bg-slate-700/30 rounded-lg p-4">
-                <div className="flex justify-between items-start mb-3">
-                  <div className="flex-1">
-                    <h4 className="text-white font-medium text-base mb-1">{service.description}</h4>
-                    <span className="inline-block px-2 py-1 bg-purple-500/20 text-purple-400 rounded-full text-xs font-medium">
-                      {service.type}
-                    </span>
+              <div key={service.id} className="bg-slate-700/30 rounded-2xl p-6">
+                <div className="mb-4">
+                  <div className="flex items-start justify-between mb-3">
+                    <h4 className="text-white font-semibold text-xl flex-1 pr-4">{service.description}</h4>
+                    <div className="text-gold-400 font-bold text-2xl flex items-center whitespace-nowrap">
+                      <IndianRupee className="w-5 h-5" />
+                      {service.cost.toLocaleString()}
+                    </div>
                   </div>
-                  <div className="text-gold-400 font-bold text-lg flex items-center">
-                    <IndianRupee className="w-4 h-4" />
-                    {service.cost.toLocaleString()}
-                  </div>
+                  <span className="inline-block px-4 py-2 bg-purple-500/20 text-purple-400 rounded-full text-sm font-medium">
+                    {service.type}
+                  </span>
                 </div>
-                <div className="flex items-center justify-between text-sm text-gray-400">
-                  <div className="flex items-center space-x-1">
-                    <Calendar className="w-4 h-4" />
+                <div className="flex items-center justify-between text-base text-gray-400 pt-4 border-t border-purple-500/10">
+                  <div className="flex items-center space-x-2">
+                    <Calendar className="w-5 h-5" />
                     <span>{service.date}</span>
                   </div>
-                  <div className="flex items-center space-x-1">
-                    <Gauge className="w-4 h-4" />
+                  <div className="flex items-center space-x-2">
+                    <Gauge className="w-5 h-5" />
                     <span>{service.km.toLocaleString()} KM</span>
                   </div>
                 </div>

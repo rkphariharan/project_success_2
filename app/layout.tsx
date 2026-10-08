@@ -46,13 +46,13 @@ export default function RootLayout({
           </nav>
 
           {/* Main Content */}
-          <main className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-6 md:py-8 pb-24 md:pb-8">
+          <main className="max-w-7xl mx-auto px-5 md:px-6 lg:px-8 py-8 md:py-8 pb-32 md:pb-8">
             {children}
           </main>
 
           {/* Bottom CTA Button - Mobile Only */}
-          <div className="md:hidden fixed bottom-0 left-0 right-0 bg-slate-900/95 backdrop-blur-sm border-t border-purple-500/20 p-4 z-50">
-            <button className="w-full bg-purple-600 hover:bg-purple-700 text-white py-4 rounded-xl text-lg font-semibold active:scale-[0.98] transition-all">
+          <div className="md:hidden fixed bottom-0 left-0 right-0 bg-slate-900/95 backdrop-blur-sm border-t border-purple-500/20 p-5 z-50">
+            <button className="w-full bg-purple-600 hover:bg-purple-700 text-white py-5 rounded-2xl text-xl font-bold active:scale-[0.98] transition-all shadow-lg shadow-purple-500/20">
               Book Service
             </button>
           </div>
