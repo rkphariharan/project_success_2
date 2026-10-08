@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
-import { Car } from 'lucide-react';
+import { Car, Settings } from 'lucide-react';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -17,30 +17,45 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+      </head>
       <body className={inter.className}>
         <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
-          {/* Mobile-Optimized Navigation */}
+          {/* Mobile-First Navigation */}
           <nav className="bg-slate-900/50 backdrop-blur-sm border-b border-purple-500/20 sticky top-0 z-50">
-            <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
-              <div className="flex justify-between items-center h-14 md:h-16">
-                <div className="flex items-center space-x-2">
-                  <Car className="w-6 h-6 md:w-8 md:h-8 text-purple-400" />
-                  <span className="text-base md:text-xl font-bold text-white">
+            <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+              <div className="flex justify-between items-center h-16">
+                <div className="flex items-center space-x-3">
+                  <Car className="w-7 h-7 md:w-8 md:h-8 text-purple-400" />
+                  <span className="text-xl font-bold text-white">
                     <span className="hidden sm:inline">Car Health Dashboard</span>
                     <span className="sm:hidden">My Car</span>
                   </span>
                 </div>
-                <div className="text-gray-300 text-xs md:text-sm">
-                  <span className="hidden sm:inline">Welcome, Customer</span>
-                  <span className="sm:hidden">Customer</span>
+                {/* Mobile: Settings Icon */}
+                <div className="md:hidden">
+                  <Settings className="w-6 h-6 text-purple-400" />
+                </div>
+                {/* Desktop: User Info */}
+                <div className="hidden md:block text-gray-300 text-sm">
+                  Welcome, Customer
                 </div>
               </div>
             </div>
           </nav>
-          {/* Mobile-Optimized Main Content */}
-          <main className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-4 md:py-8">
+
+          {/* Main Content */}
+          <main className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-6 md:py-8 pb-24 md:pb-8">
             {children}
           </main>
+
+          {/* Bottom CTA Button - Mobile Only */}
+          <div className="md:hidden fixed bottom-0 left-0 right-0 bg-slate-900/95 backdrop-blur-sm border-t border-purple-500/20 p-4 z-50">
+            <button className="w-full bg-purple-600 hover:bg-purple-700 text-white py-4 rounded-xl text-lg font-semibold active:scale-[0.98] transition-all">
+              Book Service
+            </button>
+          </div>
         </div>
       </body>
     </html>
